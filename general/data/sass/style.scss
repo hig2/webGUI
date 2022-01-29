@@ -1,0 +1,395 @@
+$bgColor: rgba(0, 17, 13, 1);
+$bgGuiColor: rgba(26, 41, 38, 1);
+$textColor: rgba(255,255,255,1);
+$hrColor: rgba(255,255,255,.2);
+$bgButton: rgba(226, 141, 57, 1);
+$bgError: rgba(255,0,51, .2);
+$hrError: rgba(255,0,51, 1);
+$oilColor: #64ffe0;
+$colorOrange: rgba(255, 107, 0, 1);
+
+// ---- не используймое
+$bgColorCont: rgba(26, 33, 46, 1); //rgba(26, 41, 38, 1);
+$bgColorButton: rgba(14, 134, 202, 1);
+$bgColorButtonHover: rgba(0,174,255, 1);
+$colorButtonText: rgba(255,255,255,1);
+$colorButtonActive: rgba(9, 83, 134, 1);
+$colorBorderCont: rgba(72, 81, 96, 1);
+$colorBgForm: rgba(19, 23, 30, 1);
+$colorGold: rgba(254, 204, 0, 1);
+$colorGreen: rgba(100, 186, 3, 1);
+
+
+* {
+  box-sizing:content-box;
+  outline-color: $bgButton;
+  -moz-user-select: none; /* Mozilla Firefox */
+  -ms-user-select: none; /* Internet Explorer (не поддерживается) */
+  -o-user-select: none; /* Opera Presto (не поддерживается) */
+  -webkit-user-select: none; /* Google Chrome, Opera Next, Safari */
+  &::selection {
+    background: $bgButton;
+  }
+}
+
+body {
+  color: $textColor;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $bgColor;
+}
+
+.wrapper {
+  width: 50%;
+  overflow: hidden;
+  min-width: 750px;
+  border-top-left-radius: 60px;
+  border-top-right-radius: 60px;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  background-color: $bgGuiColor;
+  transition-property: opacity;
+  transition: 0.5s;
+  opacity: 0; // заменять на 0 в боевой версии 
+}
+
+.header {
+  max-height: 150px;
+  padding: 18px;
+  padding-bottom: 0%;
+  &:after {
+    content: "";
+    height: 2px;
+    width: 97%;
+    background: $hrColor;
+    display: block;
+    margin: 0 auto;
+    margin-top: 0.5em;
+  }
+    &__info {
+      display: inline-flex;
+      margin: 0px;
+      margin-left: 30px;
+      color: $textColor;
+      font-size: 1.5rem;
+    }
+}
+
+.img-wraper {
+  //display: inline-flex;
+  width: 30%;
+  &__logo {
+    //height: auto;
+    width: 100%;
+    max-width: 200px;
+  }
+}
+
+.monitoring {
+  padding: 5px;
+  border-bottom: 2px solid $hrColor;
+}
+
+.menu {
+  height: 335px;
+  display: flex;
+  &__sidebar {
+    width: 30%;
+    display: inline-flex;
+  }
+  &__content {
+    width: 70%;
+    display: inline-flex;
+
+  }
+  &__nav {
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+  }
+  &__nav-item {
+    display: flex;
+    width: 100%;
+    height: 25%;
+  }
+  &__nav-link {
+    transition: 0.2s;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    text-decoration: none;
+    color: $textColor;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.3rem;
+    cursor: pointer;
+    border: 1px solid $hrColor;
+  }
+  &__nav-link_active {
+    background-color: $bgButton;
+  }    
+}
+
+.status-wrapper {
+  width: 40%;
+  margin: 5px auto;
+  padding: 5px;
+  opacity: 1; // потом исправить на 0
+  transition: 1s;
+  background-color: $bgError;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid $hrError;
+  border-top: 1px solid $hrError;
+  color: $hrError;
+  border-radius: 15px;
+  text-align: center;
+  display: none;
+}
+
+.widget {
+  width: 80%;
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 auto;
+  font-size: 14px;
+}
+
+.status {
+  margin: 5px;
+  height: 60px;
+  margin-bottom: 10px;
+  &__indicator {
+    width: 94px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    font-size: 50px;
+    height: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:  rgba(255, 255, 255, 0.2);
+    color: #1a2926;
+    margin: 0px;
+  }
+  &__label {
+    width: 90px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    color: rgba(255, 255, 255, 0.5);
+    height: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &__lamp {
+    transition: 0.5s;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: red;
+    -webkit-box-shadow: 0px 0px 16px 0px rgba(231,166,26,1);
+    -moz-box-shadow: 0px 0px 16px 0px rgba(231,166,26,1);
+    box-shadow: 0px 0px 16px 0px rgba(231,166,26,1);
+  }
+}
+
+.widget-wrapper {
+  position: relative;
+  margin: 5px;
+  margin-bottom: 10px;
+  height: 60px;
+  &__temp {
+    width: 94px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    font-size: 42px;
+    height: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:  rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.9);
+  }
+  &__label {
+    width: 90px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    color: rgba(255, 255, 255, 0.5);
+    height: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    background: url(../images/temp.svg);
+    width: 32px;
+    height: 32px;
+    top: 22px;
+    left: 67px;
+    background-size: 70%;
+    background-repeat: no-repeat;
+  }
+}
+
+
+.element {
+  min-width: 230px;
+  min-height: 20px;
+  display: block;
+  color: white;
+  padding: 7px;
+  border-bottom: 1px solid rgba(255,255,255, .2);
+  &__text {
+    margin: 0 auto;
+  }
+}
+
+.element__label {
+  display: inline-flex;
+  max-width: 47%;
+  font-size: 18px;
+}
+
+.menu__content {
+  padding-left: 10px;
+}
+
+.element__select-wrapper {
+  display: inline-flex;
+  float: right;
+  min-width: 120px;
+  padding: 0 10px;
+  width: 30%;
+  border-left: 1px solid rgba(255,255,255, .2);
+  height: 100%;
+}
+
+.element__input {
+  margin: 0 auto;
+  border-radius: 4px;
+  width: 121px;
+  text-align: center;
+  height: 16px;
+  border: 1px solid $hrColor;
+  background-color: $bgGuiColor;
+  color: $textColor;
+}
+.element__input_select {
+  background-color: $bgGuiColor;
+  color: $textColor;
+  margin: 0 auto;
+  border-radius: 4px;
+  width: 121px;
+  text-align: center;
+  border: 1px solid $hrColor;
+  cursor: pointer;
+}
+
+.tab-pane {
+  width: 95%;
+}
+
+.ses-list {
+  padding-left: 0px;
+}
+
+.element__input_check-box {
+  height: 20px;
+  outline: none;
+  margin: 0 auto;
+  border-radius: 4px;
+  width: 70px;
+  border: 1px solid $hrColor;
+  cursor: pointer;
+}
+
+.fade {
+  display: none;
+}
+
+.active {
+  display: block;
+}
+
+.button {
+  margin: 10px;
+  display: block;
+  padding: 7px;
+  width: auto;
+  height: 20px;
+  border-radius: 7px;
+  color: $textColor;
+  outline: none;
+  background-color: $bgButton;
+  border: 2px solid $hrColor;
+  cursor: pointer;
+
+  &:active {
+    border: 2px solid $bgButton;
+  }
+}
+
+.disabled {
+  opacity: 0.2;
+  cursor: default;
+}
+
+
+
+.load {
+  //display: none; // убрать 
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -80px 0 0 -80px;
+  z-index: 100;
+  width: 160px;
+  height: 160px;
+  text-align: center;
+  &__icon {
+    width: 150px;
+    height: 150px;
+    animation: spin 2s infinite linear;
+  }
+  &__text {
+    opacity: 0.9;
+    padding: 10px;
+    font-size: 25px;
+  }
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.update-info {
+  text-align: center;
+  margin: 10px auto;
+  width: 90%;
+  background-color: rgba(226, 141, 57, 0.3);
+  border-top: 1px solid $bgButton;
+  border-bottom: 1px solid $bgButton;
+  color: rgba(255,255,255,0.9);
+  &__text {
+
+  }
+}
+
+
+
