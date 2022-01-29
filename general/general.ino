@@ -6,28 +6,23 @@
 #include <ArduinoJson.h> 
 #include <Wire.h>
 
-
-
 IPAddress apIP(192, 168, 0, 176);
-
-// Web интерфейс для устройства
 ESP8266WebServer HTTP(80);
-// Для файловой системы
 File fsUploadFile;
 
-// Определяем переменные wifi
+
 String ssidAP = "АМГ \"Светлячок\"";   // SSID AP точки доступа
 String passwordAP; 
 
 //----- stateGlobal
 
-int guiTypeFuel;
-int guiRetentionTemp;
+int guiTypeFuel; //тип топлива
+int guiRetentionTemp; 
 bool guiTermostat;
 
 int widgetStatus;
 int widgetTempFuel;
-int widgetTempOut;
+int widgetTempOut; // температура на термостате 
 int widgetTempTermostat;
 int widgetErrorStatus;
 
@@ -58,7 +53,5 @@ void setup() {
 
 void loop() {
   HTTP.handleClient();
-  serialMaster();
-  i2cWatcher(0x01);
-  termostat();
+  masterTask(500);
 }

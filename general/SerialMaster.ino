@@ -128,11 +128,3 @@ boolean parsePacket(int *intArray) {
     }
     return false;
 }
-
-
-
-
-
-void updateStateGlobal(){
-
-}
