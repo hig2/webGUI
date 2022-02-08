@@ -41,8 +41,8 @@ void serialMaster(){
     if(globalStateBufer[lengthGlobalStateBufer - 1] == crc){ //проверка контрольной суммы пройдена
       //записываем результаты в необходимые перменные
       widgetErrorStatus = globalStateBufer[7]; // отлавливаем ошибку
-      widgetStatus = normalStatus(globalStateBufer[0]);
-      widgetTempFuel = globalStateBufer[1];
+      widgetStatus = normalStatus(globalStateBufer[0]); // статус
+      widgetTempFuel = globalStateBufer[1]; // температура топлива
       //widgetTempTermostat = globalStateBufer[8]; не верно
       
       
